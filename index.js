@@ -12,7 +12,7 @@ function getCurrentDateTime() {
 function backupDatabases() {
     const { date, time } = getCurrentDateTime();
     const panelBackup = `mysqldump -u root --opt panel > /database/panel/panel-${date}-${time}.sql`; // Adjust this to your database and where you would like to to dump
-    const controlPanelBackup = `mysqldump -u root --opt controlpanel > /database/controlpanel/controlpanel-${date}-${time}.sql`; // you may add more or remove this if you wish
+    const controlPanelBackup = `mysqldump -u root --opt controlpanel > /database/controlpanel/controlpanel-${date}-${time}.sql`; // You may add more or remove this if you wish
 
     exec(panelBackup, (error, stdout, stderr) => {
         if (error) {
