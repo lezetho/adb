@@ -71,3 +71,9 @@ Feel free to open issues or submit pull requests for improvements.
 ## Contact
 
 For more information or to report issues, please visit our [GitHub repository](https://github.com/Embotic-xyz/Auto-Database-Backup).
+
+
+## Credits
+
+- [@Lezetho](https://github.com/lezetho) - Main maintainer
+- [@SuperEvilLuke](https://github.com/SuperEvilLuke) - Code improvments
