@@ -20,7 +20,7 @@ function backupDatabases() {
             return;
         }
         console.log(`Panel backup completed: ${stdout}`);
-        sendDiscordWebhook(`Panel backup completed: /database/panel/panel-${date}-${time}.sql`);
+        sendDiscordWebhook(`Panel backup completed: /database/panel/panel-${date}-${time}.sql`);  // edit acordingly for your webhook message
     });
 
     exec(controlPanelBackup, (error, stdout, stderr) => {
@@ -29,7 +29,7 @@ function backupDatabases() {
             return;
         }
         console.log(`Controlpanel backup completed: ${stdout}`);
-        sendDiscordWebhook(`Controlpanel backup completed: /database/controlpanel/controlpanel-${date}-${time}.sql`);
+        sendDiscordWebhook(`Controlpanel backup completed: /database/controlpanel/controlpanel-${date}-${time}.sql`); // edit acordingly for your webhook message
     });
 }
 
