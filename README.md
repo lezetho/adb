@@ -2,7 +2,7 @@
 
 This project is a Node.js application that schedules regular backups of MySQL databases and sends notifications to a Discord channel via webhook upon completion. It utilizes the `node-schedule` library for scheduling and `axios` for sending HTTP requests.
 
-**Important:** This script should be run on the actual machine where the databases are located. It is not designed to be executed in a Pterodactyl environment.
+**IMPORTANT:** This script should be run on the actual machine where the databases are located. It is not designed to be executed in a Pterodactyl environment.
 
 ## Features
 
