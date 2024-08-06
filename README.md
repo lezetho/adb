@@ -2,6 +2,8 @@
 
 This project is a Node.js application that schedules regular backups of MySQL databases and sends notifications to a Discord channel via webhook upon completion. It utilizes the `node-schedule` library for scheduling and `axios` for sending HTTP requests.
 
+**Important:** This script should be run on the actual machine where the databases are located. It is not designed to be executed in a Pterodactyl environment.
+
 ## Features
 
 - **Scheduled Backups**: Automatically backs up databases at a specified interval.
@@ -13,6 +15,7 @@ This project is a Node.js application that schedules regular backups of MySQL da
 - Node.js installed on your system.
 - Access to MySQL databases.
 - A Discord webhook URL for notifications.
+- [PM2](https://pm2.keymetrics.io/) installed for process management (recommended).
 
 ## Installation
 
@@ -27,6 +30,12 @@ This project is a Node.js application that schedules regular backups of MySQL da
 
    ```bash
    npm install
+   ```
+
+3. **Install PM2** (if not already installed):
+
+   ```bash
+   npm install pm2@latest -g
    ```
 
 ## Configuration
@@ -52,13 +61,13 @@ This project is a Node.js application that schedules regular backups of MySQL da
 
 ## Usage
 
-To start the application, run:
+To start the application using PM2, run:
 
 ```bash
-node index.js
+pm2 start index.js --name "auto-database-backup"
 ```
 
-This will trigger an immediate backup and then schedule further backups according to the specified interval.
+This will trigger an immediate backup and then schedule further backups according to the specified interval. PM2 will ensure the script continues running and restarts it if necessary.
 
 ## License
 
@@ -71,7 +80,6 @@ Feel free to open issues or submit pull requests for improvements.
 ## Contact
 
 For more information or to report issues, please visit our [GitHub repository](https://github.com/Embotic-xyz/Auto-Database-Backup).
-
 
 ## Credits
 
