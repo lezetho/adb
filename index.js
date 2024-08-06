@@ -13,7 +13,7 @@ function backupDatabases() {
     const { date, time } = getCurrentDateTime();
     const panelBackup = `mysqldump -u root --opt panel > /database/panel/panel-${date}-${time}.sql`; // Adjust this to your database and where you would like to to dump
     const controlPanelBackup = `mysqldump -u root --opt controlpanel > /database/controlpanel/controlpanel-${date}-${time}.sql`; // You may add more or remove this if you wish
-
+    // Make sure you edit panelBackup to whatever you set above (line 14)
     exec(panelBackup, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing panel backup: ${error}`);
@@ -22,7 +22,8 @@ function backupDatabases() {
         console.log(`Panel backup completed: ${stdout}`);
         sendDiscordWebhook(`Panel backup completed: /database/panel/panel-${date}-${time}.sql`);  // Edit acordingly for your webhook message
     });
-
+    
+     // Make sure you edit panelBackup to whatever you set above (line 15)
     exec(controlPanelBackup, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing controlpanel backup: ${error}`);
