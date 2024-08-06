@@ -76,4 +76,4 @@ For more information or to report issues, please visit our [GitHub repository](h
 ## Credits
 
 - [@Lezetho](https://github.com/lezetho) - Main maintainer
-- [@SuperEvilLuke](https://github.com/SuperEvilLuke) - Code improvments
+- [@SuperEvilLuke](https://github.com/SuperEvilLuke) - Code improvements
