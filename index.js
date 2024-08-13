@@ -7,7 +7,7 @@ const execAsync = promisify(exec);
 const DB_USER = 'root'; // Your MySQL username
 const DB_PASSWORD = 'your_password'; // Your MySQL password
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/changeme'; // Your Discord webhook URL
-const databases = ['panel', 'controlpanel']; // Add more databases here if needed
+const databases = ['panel', 'controlpanel']; // Add more or change databases here if needed
 
 async function getCurrentDateTime() {
     const now = new Date();
@@ -21,7 +21,8 @@ async function backupDatabase(databaseName) {
     const backupFile = `/database/${databaseName}/${databaseName}-${date}-${time}.sql`;
 
     try {
-        const { stdout, stderr } = await execAsync(`mysqldump -u ${DB_USER} -p${DB_PASSWORD} --opt ${databaseName} > ${backupFile}`);
+
+        const { stdout, stderr } = await execAsync(`/usr/bin/mariadb-dump -u ${DB_USER} -p'${DB_PASSWORD}' --opt ${databaseName} > ${backupFile}`);
         if (stderr) {
             throw new Error(stderr);
         }
@@ -57,7 +58,7 @@ function sendDiscordWebhook(message) {
         });
 }
 
-// Schedule backup every 3 hours, change /3 to the amount you wnt
+// Schedule backup every 3 hours, change /3 to the amount you want
 schedule.scheduleJob('0 */3 * * *', backupDatabases);
 
 // Initial call to execute the backup immediately
