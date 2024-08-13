@@ -22,11 +22,7 @@ async function backupDatabase(databaseName) {
     const backupFile = `/database/${databaseName}/${databaseName}-${date}-${time}.sql`;
 
     try {
-
-        const { stdout, stderr } = await execAsync(`/usr/bin/mariadb-dump -u ${DB_USER} -p'${DB_PASSWORD}' --opt ${databaseName} > ${backupFile}`);
-        if (stderr) {
-            throw new Error(stderr);
-        }
+        const { stdout } = await execAsync(`mysqldump -u ${DB_USER} -p'${DB_PASSWORD}' --opt ${databaseName} > ${backupFile} 2>/dev/null`);
         console.log(`${databaseName} backup completed: ${stdout}`);
         sendDiscordWebhook(`${databaseName} backup completed: ${backupFile}`);
     } catch (error) {
