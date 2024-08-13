@@ -4,6 +4,7 @@ const schedule = require('node-schedule');
 const axios = require('axios');
 const execAsync = promisify(exec);
 
+//CONFIG
 const DB_USER = 'root'; // Your MySQL username
 const DB_PASSWORD = 'your_password'; // Your MySQL password
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/changeme'; // Your Discord webhook URL
