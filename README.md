@@ -1,29 +1,33 @@
-# Auto Database Backup
+# ADB - AutoDBackup
 
-This project is a Node.js application that schedules regular backups of MySQL databases and sends notifications to a Discord channel via webhook upon completion. It utilizes the `node-schedule` library for scheduling and `axios` for sending HTTP requests.
+>[!IMPORTANT]
+>
+>### This should be ran on your database machine
+> ---
+>This code should be setup and ran inside your database machine or where ever your database is located. External access is not coded inside the script yet, however it is planned to be updated.
 
-**IMPORTANT:** This script should be run on the actual machine where the databases are located. It is not designed to be executed in a Pterodactyl environment.
+This is a simple Node.JS application that's user friendly and allows users to backup their most important databases locally to a set position instead 2 folders: `controlpanel` and `pterodactyl`. This was originally created for ctrlpanel and pterodactyl use however can have multiple other uses
 
 ## Features
 
-- **Scheduled Backups**: Automatically backs up databases at a specified interval.
-- **Discord Notifications**: Sends a message to a Discord channel when a backup is completed.
-- **Customizable**: Easily adjust the database backup commands, file paths, and Discord webhook URL.
+- **Scheduled Backups**: Automatic backups occur depending on the set interveal set in the code. This is planned to change when the next version releases.
+- **Discord Updates**: The code sends a webhook to Discord with a embed stating that the database was backed up successfully so you don't need to worry.
+- **Customizable**: The code is meant for ease, allowing users to change the time intervel, Discord webhook, and database location to their preferences. This is planned to change in the next update.
 
-## Prerequisites
+## Requirements
 
-- Node.js installed on your system.
-- Access to MySQL databases.
-- A Discord webhook URL for notifications.
-- [PM2](https://pm2.keymetrics.io/) installed for process management (recommended).
+- Node.js installed
+- MySQL database(s) setup.
+- *optional* A Discord webhook URL for backup notifications.
+- [PM2](https://pm2.keymetrics.io/) installed to easily be able to run the code (recommended).
 
 ## Installation
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Embotic-xyz/Auto-Database-Backup
-   cd Auto-Database-Backup
+   git clone https://github.com/lezetho/adb
+   cd adb
    ```
 
 2. **Install dependencies**:
@@ -32,7 +36,7 @@ This project is a Node.js application that schedules regular backups of MySQL da
    npm install
    ```
 
-3. **Install PM2** (if not already installed):
+3. **Install PM2** (if not already installed) *Recommend option*:
 
    ```bash
    npm install pm2@latest -g
@@ -47,7 +51,7 @@ This project is a Node.js application that schedules regular backups of MySQL da
    const controlPanelBackup = `mysqldump -u root --opt controlpanel > /database/controlpanel/controlpanel-${date}-${time}.sql`;
    ```
 
-2. **Set the Discord webhook URL**: Replace `'https://discord.com/api/webhooks/changeme'` with your actual Discord webhook URL.
+2. **Set the Discord webhook URL**: Replace `'https://discord.com/api/webhooks/changeme'` with your actual Discord webhook URL. *optional*
 
    ```javascript
    const webhookUrl = 'https://discord.com/api/webhooks/changeme';
@@ -67,11 +71,11 @@ To start the application using PM2, run:
 pm2 start index.js --name "auto-database-backup"
 ```
 
-This will trigger an immediate backup and then schedule further backups according to the specified interval. PM2 will ensure the script continues running and restarts it if necessary.
+On start of the code, it will backup immidiently. Please check your backup location to make sure that the backups are working. Please also check your Discord server to see if the Discord Webhook worked if enabled.
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
@@ -79,9 +83,9 @@ Feel free to open issues or submit pull requests for improvements.
 
 ## Contact
 
-For more information or to report issues, please visit our [GitHub repository](https://github.com/Embotic-xyz/Auto-Database-Backup).
+For more information or to report issues, please visit our [GitHub repository](https://github.com/lezetho/adv).
 
 ## Credits
 
 - [@Lezetho](https://github.com/lezetho) - Main maintainer
-- [@SuperEvilLuke](https://github.com/SuperEvilLuke) - Code improvements
+- [@SuperEvilLuke](https://github.com/SuperEvilLuke) - Contributer
